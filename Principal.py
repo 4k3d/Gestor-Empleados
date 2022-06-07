@@ -1,8 +1,24 @@
 from Empleados import *
 import os
+import os.path
+import pickle
 
 contadorEmpleados = 0
 empleados = []
+
+if os.path.isfile("empleados.dat"):
+	f = open("empleados.dat","rb")
+	try:
+		while True:
+			contadorEmpleados = contadorEmpleados + 1
+			empleados.append(pickle.load(f))
+	except:
+		f.close()
+
+def guardarDatos(obj : list):
+	f = open("empleados.dat","ab+")
+	for empleado in obj:
+		pickle.dump(empleado,f)
 
 def mostrarMenu():
 	mensajeBienvenida = '''
@@ -96,4 +112,5 @@ while(opcion == -1):
 		os.system("clear")
 		opcion = -1
 	if(opcion == 0):
+		guardarDatos(empleados)
 		break
