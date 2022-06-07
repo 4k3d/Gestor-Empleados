@@ -3,7 +3,7 @@ from Empleados import *
 contadorEmpleados = 0
 empleados = []
 
-def calcularSueldo(obj):
+def calcularSueldo(obj : list):
 	print("Selecciona numero de empleado para calcular su sueldo")
 	for i in obj:
 		print(i.numEmpleado)
@@ -12,7 +12,7 @@ def calcularSueldo(obj):
 	obj[i  - 1].Sueldo(horasTrabajadas)
 	
 	
-def mostrarEmpleado(obj):
+def mostrarEmpleado(obj : list):
 	print("Selecciona numero de empleado")
 	for i in obj:
 		print(i.numEmpleado)
@@ -20,7 +20,7 @@ def mostrarEmpleado(obj):
 	obj[i - 1].mostrarInformacion()
 	
 	
-def modificarEmpleado(obj):
+def modificarEmpleado(obj : list):
 	print("Selecciona numero de empleado")
 	for i in obj:
 		print(i.numEmpleado)
