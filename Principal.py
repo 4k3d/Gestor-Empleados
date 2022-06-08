@@ -10,15 +10,15 @@ if os.path.isfile("empleados.dat"):
 	f = open("empleados.dat","rb")
 	try:
 		while True:
-			contadorEmpleados = contadorEmpleados + 1
 			empleados.append(pickle.load(f))
+			contadorEmpleados = contadorEmpleados + 1
 	except:
 		f.close()
 
-def guardarDatos(obj : list):
+def guardarEmpleado(obj : Empleado):
 	f = open("empleados.dat","ab+")
-	for empleado in obj:
-		pickle.dump(empleado,f)
+	pickle.dump(obj,f)
+	f.close()
 
 def mostrarMenu():
 	mensajeBienvenida = '''
@@ -92,9 +92,13 @@ while(opcion == -1):
 	opcion = int(input("Ingrese opcion: "))
 	if(opcion == 1):
 		os.system("clear")
-		empleados.append(crearEmpleado())
+		empleado = crearEmpleado()
+		empleados.append(empleado)
+		guardarEmpleado(empleado)
 		os.system("clear")
 		print("\nEmpleado creado con exito")
+		input("Presiona una tecla para continuar...")
+		os.system("clear")
 		opcion = -1
 	elif(opcion == 2):
 		os.system("clear")
@@ -112,5 +116,4 @@ while(opcion == -1):
 		os.system("clear")
 		opcion = -1
 	if(opcion == 0):
-		guardarDatos(empleados)
 		break
